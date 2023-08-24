@@ -41,12 +41,6 @@ The visual representation of these instances can be found below:
 | 2021-08-24 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/0c47b1a1-9c43-4267-81e2-65193ce30e90"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/88202f16-f52f-4806-9385-737ba52439fd"> | TRUE         |
 
 
-![image](https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/1e4649cb-3c19-48fa-b9db-4ca1266d39ca)
-
-```
-Probability of trend change after a doji appearance: 54.55% (6/11)
-```
-
 ### QQQ (NASDAQ-100 ETF) - Daily Data (2013.08.26 ~ 2023.08.22)
 
 For QQQ, the probability of trend change following a Doji is 29.41%. 
