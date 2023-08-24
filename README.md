@@ -1,18 +1,30 @@
 # Demystifying Doji
 
-Doji candle is formed when opening and closing prices are virtually the same. The lengths of shadows can vary. If previous are bearish, after a Doji, may be ready to bullish.
+The Doji candlestick pattern has long fascinated traders and analysts. 
+
+Characterized by virtually identical opening and closing prices, the Doji's shadows may vary in length, and its appearance often sparks debates about potential market reversals. 
+
+But how effective is the Doji in signaling such reversals? This investigation seeks to unravel the truth.
 
 # Definition of Doji
 
 It is a doji candle if `price(close) - price(open) == 0`
 
+A Doji candle is formed when the difference between the closing and opening prices is zero.
+
 # Objective
 
-To investigate the efficacy of the doji pattern in signaling a reversal in trend.
+The primary goal of this study is to investigate the efficacy of the Doji pattern in signaling a reversal in trend. 
 
-# Result
+By examining various market scenarios, we aim to determine whether the appearance of a Doji truly shows a change in market direction.
 
-Based on SPY (2013.08.23 ~ 2023.08.22)
+# Observations
+
+### SPY (S&P 500 ETF) - Daily Data (2013.08.23 ~ 2023.08.22)
+
+The analysis of SPY reveals a probability of trend change after a Doji appearance of 54.55% (6 out of 11 instances). 
+
+The visual representation of these instances can be found below:
 
 | Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
 |------------|---------------|--------------|--------------|
@@ -34,6 +46,105 @@ Based on SPY (2013.08.23 ~ 2023.08.22)
 ```
 Probability of trend change after a doji appearance: 54.55% (6/11)
 ```
+
+### QQQ (NASDAQ-100 ETF) - Daily Data (2013.08.26 ~ 2023.08.22)
+
+For QQQ, the probability of trend change following a Doji is 29.41%. 
+
+The detailed observations are as follows:
+
+| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
+|------------|---------------|--------------|--------------|
+| 2013-12-09 |       0.909888 |      0.717477 |        False |
+| 2014-02-12 |      -0.414075 |      0.360623 |         True |
+| 2014-11-04 |       0.684007 |      0.966447 |        False |
+| 2014-11-25 |       0.966791 |     -0.500820 |         True |
+| 2015-01-26 |      -0.405235 |      0.974566 |         True |
+| 2015-06-22 |      -0.432752 |      0.508323 |         True |
+| 2016-06-08 |       0.860118 |     -0.277862 |         True |
+| 2016-12-06 |       0.241883 |      0.378632 |        False |
+| 2017-01-17 |       0.710802 |      0.937530 |        False |
+| 2017-01-27 |       0.937262 |      0.981065 |        False |
+| 2017-05-10 |       0.969708 |      0.892039 |        False |
+| 2017-08-04 |       0.782253 |      0.180834 |        False |
+| 2017-08-28 |      -0.504303 |     -0.214864 |        False |
+| 2017-11-14 |       0.882556 |      0.148962 |        False |
+| 2018-06-15 |       0.951446 |      0.387703 |        False |
+| 2018-08-30 |       0.556564 |      0.220182 |        False |
+| 2019-06-21 |       0.813423 |      0.832825 |        False |
+
+
+### GLD (Gold ETF) - Daily Data (2013.08.26 ~ 2023.08.22)
+
+In the case of GLD, the Doji pattern appears to have a stronger correlation with trend changes, with a probability of 63.64%.
+
+| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
+|------------|---------------|--------------|--------------|
+| 2014-05-15 |       0.172831 |     -0.597069 |         True |
+| 2016-09-22 |      -0.040200 |     -0.833573 |        False |
+| 2016-10-03 |      -0.293298 |      0.639560 |         True |
+| 2016-10-10 |      -0.638546 |      0.888980 |         True |
+| 2018-02-26 |      -0.212621 |      0.466576 |         True |
+| 2018-04-23 |       0.216691 |     -0.771676 |         True |
+| 2018-12-27 |       0.908018 |      0.351492 |        False |
+| 2019-03-04 |       0.190813 |      0.304051 |        False |
+| 2021-01-05 |       0.771963 |     -0.541814 |         True |
+| 2021-11-23 |       0.748877 |      0.472644 |        False |
+| 2022-07-15 |      -0.944289 |      0.953989 |         True |
+
+
+### TLT (20-Year Treasury Bond ETF) - Daily Data (2013.08.26 ~ 2023.08.22)
+
+The analysis of TLT yields a probability of trend change after a Doji appearance of 46.15%.
+
+| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
+|------------|---------------|--------------|--------------|
+| 2015-03-16 |      -0.336019 |     -0.270982 |        False |
+| 2015-04-27 |      -0.624442 |     -0.742910 |        False |
+| 2017-02-01 |      -0.519381 |      0.184155 |         True |
+| 2017-05-15 |      -0.884289 |      0.758800 |         True |
+| 2017-09-29 |      -0.766997 |     -0.289241 |        False |
+| 2018-06-19 |       0.345815 |      0.716852 |        False |
+| 2018-07-06 |       0.907663 |     -0.902788 |         True |
+| 2018-07-16 |       0.886123 |     -0.500450 |         True |
+| 2019-05-03 |      -0.179806 |      0.907775 |         True |
+| 2020-02-12 |       0.792282 |      0.864004 |        False |
+| 2020-04-14 |       0.624550 |     -0.800298 |         True |
+| 2021-08-03 |       0.627635 |      0.238749 |        False |
+| 2023-07-18 |      -0.686837 |     -0.941213 |        False |
+
+
+### VNQ (Real Estate ETF) - Daily Data (2013.08.26 ~ 2023.08.22)
+
+For VNQ, the probability of trend change following a Doji is exactly 50.00%.
+
+| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
+|------------|---------------|--------------|--------------|
+| 2014-05-09 |       0.949691 |      0.713544 |        False |
+| 2014-06-02 |       0.566969 |     -0.246980 |         True |
+| 2014-07-15 |       0.565256 |     -0.758967 |         True |
+| 2014-10-06 |      -0.888966 |      0.982454 |         True |
+| 2014-11-28 |       0.186775 |      0.625628 |        False |
+| 2014-12-18 |       0.669793 |      0.922071 |        False |
+| 2017-03-01 |       0.937747 |     -0.464087 |         True |
+| 2018-01-25 |      -0.816294 |     -0.763135 |        False |
+| 2020-08-25 |      -0.138082 |     -0.542076 |        False |
+| 2020-10-22 |       0.416971 |      0.879713 |        False |
+| 2021-05-18 |      -0.370968 |      0.944490 |         True |
+| 2021-11-29 |      -0.119019 |      0.878053 |         True |
+| 2022-12-30 |      -0.819642 |      0.886157 |         True |
+| 2023-01-19 |       0.807325 |      0.422902 |        False |
+
+
+# Conclusion
+
+The Doji candlestick pattern does not present a consistent or strong correlation with trend reversals across various markets.
+
+The probabilities observed range from as low as 29.41% to as high as 63.64%, indicating a lack of uniformity in its predictive power.
+
+It is essential to recognize that correlation does not imply causation. While the Doji may coincide with trend changes in some instances, it does not necessarily cause them. Traders and investors should exercise caution when interpreting the Doji pattern. It seems wise to demystify the Doji pattern and not over-interpret it. That said, it doesn't mean that various other patterns incorporating Doji are meaningless. The pursuit of precise understanding through future quantitative research appears to be an essential approach, reflecting a commitment to rigorous analysis rather than superficial interpretation.
+
+<!-- In the complex and multifaceted world of financial markets, the Doji remains an enigmatic symbol, one that invites further exploration but defies simplistic interpretation. Its allure lies in its ambiguity, and its true value may be in the questions it prompts rather than the answers it provides. -->
 
 <!-- plan.
 1. Define doji

@@ -5,7 +5,10 @@ from data_preparation import add_doji_column
 from data_visualization import create_dataframe, draw_linear_regression
 
 # Import SPY.csv
-df = pd.read_csv('HistoricalData_SPY_from_Nasdaq.csv')
+df = pd.read_csv('HistoricalData_VNQ_from_Nasdaq.csv')
+
+# Rename a column name
+df.rename(columns={'Close/Last': 'Close'}, inplace=True)
 
 # Convert the 'Date' column to datetime format
 df['Date'] = pd.to_datetime(df['Date'])
@@ -27,7 +30,7 @@ calculate_correlation_coefficients(df, num_days=20, future=True)
 doji = df[df['doji']==True]
 doji.to_csv('doji.csv')
 
-# save images
+# Save images
 for i in doji.index:
     past_dates = df.iloc[i]['past_20_dates']
     draw_linear_regression(past_dates, df.iloc[i]['past_20_days'])
@@ -39,7 +42,7 @@ for i in doji.index:
     plt.savefig(f'pictures/future_20_days_{i}.png')
     plt.close()
 
-# create new dataframe
+# Create new dataframe
 snapshot_df = create_dataframe(doji, 20)
 
 print(snapshot_df)
@@ -47,4 +50,4 @@ print(snapshot_df)
 trend_change_row = snapshot_df[snapshot_df['Trend_Change']==True]
 
 print(f"Probability of trend change after a doji appearance: {len(trend_change_row)/len(snapshot_df)*100:.2f}%")
-snapshot_df.to_csv('SPY_20130823_20230822.csv')
+snapshot_df.to_csv('VNQ_20130826_20230822.csv')
