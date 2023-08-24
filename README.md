@@ -6,6 +6,35 @@ Doji candle is formed when opening and closing prices are virtually the same. Th
 
 It is a doji candle if `price(close) - price(open) == 0`
 
+# Objective
+
+To investigate the efficacy of the doji pattern in signaling a reversal in trend.
+
+# Result
+
+Based on SPY (2013.08.23 ~ 2023.08.22)
+
+| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
+|------------|---------------|--------------|--------------|
+| 2014-08-26 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/79c589fb-9a1b-4375-9b3f-303e26af8d52"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/4e82c901-17a7-4adb-a20e-172a91bcd9d1"> | TRUE |
+| 2015-05-15 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/0041145f-5284-411a-9496-fd11ee19e285"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/future_20_days_434.png?raw=true"> | TRUE |
+| 2015-06-09 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/past_20_days_450.png?raw=true"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/future_20_days_450.png?raw=true"> | FALSE |
+| 2015-06-17 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/past_20_days_456.png?raw=true"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/future_20_days_456.png?raw=true"> | FALSE        |
+| 2017-05-01 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/past_20_days_927.png?raw=true"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/future_20_days_927.png?raw=true"> | FALSE        |
+| 2018-05-25 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/past_20_days_1197.png?raw=true"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/future_20_days_1197.png?raw=true"> | FALSE        |
+| 2018-10-02 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/past_20_days_1286.png?raw=true"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/future_20_days_1286.png?raw=true"> | TRUE         |
+| 2019-05-08 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/past_20_days_1435.png?raw=true"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/future_20_days_1435.png?raw=true"> | TRUE         |
+| 2019-06-14 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/past_20_days_1461.png?raw=true"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/future_20_days_1461.png?raw=true"> | FALSE        |
+| 2020-11-02 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/past_20_days_1811.png?raw=true"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/future_20_days_1811.png?raw=true"> | TRUE         |
+| 2021-08-24 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/past_20_days_2014.png?raw=true"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/blob/master/pictures/future_20_days_2014.png?raw=true"> | TRUE         |
+
+
+![image](https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/1e4649cb-3c19-48fa-b9db-4ca1266d39ca)
+
+```
+Probability of trend change after a doji appearance: 54.55% (6/11)
+```
+
 <!-- plan.
 1. Define doji
 2. Define uptrend, and downtrend
