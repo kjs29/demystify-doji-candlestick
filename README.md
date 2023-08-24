@@ -12,6 +12,11 @@ It is a doji candle if `price(close) - price(open) == 0`
 
 A Doji candle is formed when the difference between the closing and opening prices is zero.
 
+![image](https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/387755bb-fd59-46e3-98ed-bd27cd17c0e0)
+
+image source - [nasdaq.com](https://www.nasdaq.com/articles/hammer-doji-bullish-reversal-candlestick-patterns-2017-01-03)
+
+
 # Objective
 
 The primary goal of this study is to investigate the efficacy of the Doji pattern in signaling a reversal in trend. 
