@@ -45,6 +45,7 @@ The visual representation of these instances can be found below:
 | 2020-11-02 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/41bbd23c-daf1-4987-bc60-6e6c3a529fbd"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/9890e40b-cf7b-465b-aec5-f19b51e52e71"> | TRUE         |
 | 2021-08-24 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/0c47b1a1-9c43-4267-81e2-65193ce30e90"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/88202f16-f52f-4806-9385-737ba52439fd"> | TRUE         |
 
+**R_before_Doji and R_after_Doji are derivated from 20 trading days.**
 
 ### QQQ (NASDAQ-100 ETF) - Daily Data (2013.08.26 ~ 2023.08.22)
 
