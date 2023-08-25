@@ -79,19 +79,6 @@ The detailed observations are as follows:
 | 2018-08-30 |       0.556564 |      0.220182 |        False |
 | 2019-06-21 |       0.813423 |      0.832825 |        False |
 
-### Test period: 02/27/2014 ~ 08/18/2016
-
-Probability of trend change after a doji appearance: 80.00%
-
-| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
-|------------|---------------|--------------|--------------|
-| 2014-11-04 |      0.684007 |     0.966447 |        False |
-| 2014-11-25 |      0.966791 |    -0.500820 |         True |
-| 2015-01-26 |     -0.405235 |     0.974566 |         True |
-| 2015-06-22 |     -0.432752 |     0.508323 |         True |
-| 2016-06-08 |      0.860118 |    -0.277862 |         True |
-
-
 ## GLD (Gold ETF) - Daily Data
 
 ### Test period: 2013.08.26 ~ 2023.08.22
