@@ -25,7 +25,9 @@ By examining various market scenarios, we aim to determine whether the appearanc
 
 # Observations
 
-### SPY (S&P 500 ETF) - Daily Data (2013.08.23 ~ 2023.08.22)
+## SPY (S&P 500 ETF) - Daily Data 
+
+### Test period: 2013.08.23 ~ 2023.08.22
 
 The analysis of SPY reveals a probability of trend change after a Doji appearance of 54.55% (6 out of 11 instances). 
 
@@ -45,9 +47,66 @@ The visual representation of these instances can be found below:
 | 2020-11-02 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/41bbd23c-daf1-4987-bc60-6e6c3a529fbd"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/9890e40b-cf7b-465b-aec5-f19b51e52e71"> | TRUE         |
 | 2021-08-24 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/0c47b1a1-9c43-4267-81e2-65193ce30e90"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/88202f16-f52f-4806-9385-737ba52439fd"> | TRUE         |
 
+**Margin Of Error(MOE) = 0%. [^1]**
+
 **R_before_Doji and R_after_Doji are derivated from 20 trading days.**
 
-### QQQ (NASDAQ-100 ETF) - Daily Data (2013.08.26 ~ 2023.08.22)
+### Test period: 03/25/2014 ~ 02/22/2019
+
+Probability of trend change after a doji appearance: 42.86%
+
+| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
+|------------|---------------|--------------|--------------|
+| 2014-08-26 | 0.674029      | -0.332280    | True         |
+| 2015-05-15 | 0.149173      | -0.788619    | True         |
+| 2015-06-09 | -0.292485     | -0.736562    | False        |
+| 2015-06-17 | -0.758554     | -0.272807    | False        |
+| 2017-05-01 | 0.512020      | 0.406110     | False        |
+| 2018-05-25 | 0.873484      | 0.279332     | False        |
+| 2018-10-02 | 0.654129      | -0.900382    | True         |
+
+### Test period: 11/09/2016 ~ 09/23/2021
+
+Probability of trend change after a doji appearance: 57.14%
+
+| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
+|------------|---------------|--------------|--------------|
+| 2017-05-01 | 0.512020      | 0.406110     | False        |
+| 2018-05-25 | 0.873484      | 0.279332     | False        |
+| 2018-10-02 | 0.654129      | -0.900382    | True         |
+| 2019-05-08 | 0.617078      | -0.592132    | True         |
+| 2019-06-14 | 0.215034      | 0.843783     | False        |
+| 2020-11-02 | -0.514343     | 0.845810     | True         |
+| 2021-08-24 | 0.645146      | -0.753308    | True         |
+
+### Test period: 11/10/2014 ~ 04/12/2016
+
+Probability of trend change after a doji appearance: 33.33%
+
+| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
+|------------|---------------|--------------|--------------|
+| 2015-05-15 | 0.149173      | -0.788619    | True         |
+| 2015-06-09 | -0.292485     | -0.736562    | False        |
+| 2015-06-17 | -0.758554     | -0.272807    | False        |
+
+### Test period: 01/25/2018 ~ 10/22/2021
+
+Probability of trend change after a doji appearance: 66.67%
+
+| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
+|------------|---------------|--------------|--------------|
+| 2018-05-25 | 0.873484      | 0.279332     | False        |
+| 2018-10-02 | 0.654129      | -0.900382    | True         |
+| 2019-05-08 | 0.617078      | -0.592132    | True         |
+| 2019-06-14 | 0.215034      | 0.843783     | False        |
+| 2020-11-02 | -0.514343     | 0.845810     | True         |
+| 2021-08-24 | 0.645146      | -0.753308    | True         |
+
+... and more
+
+## QQQ (NASDAQ-100 ETF) - Daily Data 
+
+### Test period: 2013.08.26 ~ 2023.08.22
 
 For QQQ, the probability of trend change following a Doji is 29.41%. 
 
@@ -73,8 +132,22 @@ The detailed observations are as follows:
 | 2018-08-30 |       0.556564 |      0.220182 |        False |
 | 2019-06-21 |       0.813423 |      0.832825 |        False |
 
+### Test period: 02/27/2014 ~ 08/18/2016
 
-### GLD (Gold ETF) - Daily Data (2013.08.26 ~ 2023.08.22)
+Probability of trend change after a doji appearance: 80.00%
+
+| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
+|------------|---------------|--------------|--------------|
+| 2014-11-04 |      0.684007 |     0.966447 |        False |
+| 2014-11-25 |      0.966791 |    -0.500820 |         True |
+| 2015-01-26 |     -0.405235 |     0.974566 |         True |
+| 2015-06-22 |     -0.432752 |     0.508323 |         True |
+| 2016-06-08 |      0.860118 |    -0.277862 |         True |
+
+
+## GLD (Gold ETF) - Daily Data
+
+### Test period: 2013.08.26 ~ 2023.08.22
 
 In the case of GLD, the Doji pattern appears to have a stronger correlation with trend changes, with a probability of 63.64%.
 
@@ -93,7 +166,7 @@ In the case of GLD, the Doji pattern appears to have a stronger correlation with
 | 2022-07-15 |      -0.944289 |      0.953989 |         True |
 
 
-### TLT (20-Year Treasury Bond ETF) - Daily Data (2013.08.26 ~ 2023.08.22)
+## TLT (20-Year Treasury Bond ETF) - Daily Data (2013.08.26 ~ 2023.08.22)
 
 The analysis of TLT yields a probability of trend change after a Doji appearance of 46.15%.
 
@@ -114,7 +187,7 @@ The analysis of TLT yields a probability of trend change after a Doji appearance
 | 2023-07-18 |      -0.686837 |     -0.941213 |        False |
 
 
-### VNQ (Real Estate ETF) - Daily Data (2013.08.26 ~ 2023.08.22)
+## VNQ (Real Estate ETF) - Daily Data (2013.08.26 ~ 2023.08.22)
 
 For VNQ, the probability of trend change following a Doji is exactly 50.00%.
 
@@ -144,6 +217,8 @@ The probabilities observed range from as low as 29.41% to as high as 63.64%, ind
 
 It is essential to recognize that correlation does not imply causation. While the Doji may coincide with trend changes in some instances, it does not necessarily cause them. Traders and investors should exercise caution when interpreting the Doji pattern. It seems wise to demystify the Doji pattern and not over-interpret it. That said, it doesn't mean that various other patterns incorporating Doji are meaningless. The pursuit of precise understanding through future quantitative research appears to be an essential approach, reflecting a commitment to rigorous analysis rather than superficial interpretation.
 
+---
+[^1]: Daily Close - Daily Open == 0. If MOE is 0.05%, abs(Daily Close - Daily Open) <= Daily Close * 0.05 / 100
 <!-- In the complex and multifaceted world of financial markets, the Doji remains an enigmatic symbol, one that invites further exploration but defies simplistic interpretation. Its allure lies in its ambiguity, and its true value may be in the questions it prompts rather than the answers it provides. -->
 
 <!-- plan.

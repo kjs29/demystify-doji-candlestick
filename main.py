@@ -1,72 +1,98 @@
 import random
 import pandas as pd
 import matplotlib.pyplot as plt
+import dataframe_image as dfi
 from correlation_analysis import calculate_correlation_coefficients
 from data_preparation import add_doji_column, remove_non_numeric_symbols
 from data_visualization import create_dataframe, draw_linear_regression
 
-# Import dataset
-filename = 'HistoricalData_TLT_from_Nasdaq.csv'
-df = pd.read_csv(filename)
+def main():
+    # Import dataset
+    filename = 'HistoricalData_QQQ_from_Nasdaq.csv'
+    df = pd.read_csv(filename)
 
-# Rename a column name
-df.rename(columns={'Close/Last': 'Close'}, inplace=True)
+    # Rename a column name
+    df.rename(columns={'Close/Last': 'Close'}, inplace=True)
 
-# randomly choose rows
-starting_index = random.randint(0,len(df)-2)
-ending_index = random.randint(starting_index+1, len(df)-1)
-df = df.iloc[starting_index: ending_index]
-training_date_begin = df.iloc[len(df)-1]['Date']
-training_date_end = df.iloc[0]['Date']
+    # randomly choose rows
+    starting_index = random.randint(0,len(df)-2)
+    ending_index = random.randint(starting_index+1, len(df)-1)
+    df = df.iloc[starting_index: ending_index]
+    training_date_begin = df.iloc[len(df)-1]['Date']
+    training_date_end = df.iloc[0]['Date']
 
-# get rid of non-numeric symbols in the columns and convert to float type
-cols = ['Close','Open','High','Low']
-remove_non_numeric_symbols(df, cols)
+    # get rid of non-numeric symbols in the columns and convert to float type
+    cols = ['Close','Open','High','Low']
+    remove_non_numeric_symbols(df, cols)
 
-# Convert the 'Date' column to datetime format
-df['Date'] = pd.to_datetime(df['Date'])
+    # Convert the 'Date' column to datetime format
+    df['Date'] = pd.to_datetime(df['Date'])
 
-# Sort the DataFrame by the 'Date' column in ascending order
-df = df.sort_values(by='Date', ascending=True)
+    # Sort the DataFrame by the 'Date' column in ascending order
+    df = df.sort_values(by='Date', ascending=True)
 
-# Reset the index of the DataFrame
-df.reset_index(drop=True, inplace=True)
+    # Reset the index of the DataFrame
+    df.reset_index(drop=True, inplace=True)
 
-# Add 'doji' column
-add_doji_column(df,error_margin_percentage=0)
+    # Add 'doji' column
+    add_doji_column(df,error_margin_percentage=0)
 
-# Calculate correlation coefficient
-calculate_correlation_coefficients(df, num_days=20, future=False)
-calculate_correlation_coefficients(df, num_days=20, future=True)
+    # Calculate correlation coefficient
+    calculate_correlation_coefficients(df, num_days=20, future=False)
+    calculate_correlation_coefficients(df, num_days=20, future=True)
 
-# Create a new DataFrame 'doji' and save it
-doji = df[df['doji']==True]
-doji.to_csv('doji.csv')
+    # Create a new DataFrame 'doji' and save it
+    doji = df[df['doji']==True]
+    doji.to_csv('doji.csv')
 
-# Save images
-for i in doji.index:
-    past_dates = df.iloc[i]['past_20_dates']
-    draw_linear_regression(past_dates, df.iloc[i]['past_20_days'])
-    plt.savefig(f'pictures/past_20_days_{i}.png')
-    plt.close()
+    # Save images
+    for i in doji.index:
+        past_dates = df.iloc[i]['past_20_dates']
+        draw_linear_regression(past_dates, df.iloc[i]['past_20_days'])
+        plt.savefig(f'pictures/past_20_days_{i}.png')
+        plt.close()
 
-    future_dates = df.iloc[i]['future_20_dates']
-    draw_linear_regression(future_dates, df.iloc[i]['future_20_days'])
-    plt.savefig(f'pictures/future_20_days_{i}.png')
-    plt.close()
+        future_dates = df.iloc[i]['future_20_dates']
+        draw_linear_regression(future_dates, df.iloc[i]['future_20_days'])
+        plt.savefig(f'pictures/future_20_days_{i}.png')
+        plt.close()
 
-# Create new dataframe
-snapshot_df = create_dataframe(doji, 20)
+    # Create new dataframe
+    snapshot_df = create_dataframe(doji, 20)
 
-print(snapshot_df)
+    # Reset the index without adding it as a new column
+    snapshot_df.reset_index(drop=True, inplace=True)
 
-trend_change_row = snapshot_df[snapshot_df['Trend_Change']==True]
+    # save the snapshot_df as image file
+    dfi.export(snapshot_df, f'result_{count}.png')
 
-try:
-    print(f"Probability of trend change after a doji appearance: {len(trend_change_row)/len(snapshot_df)*100:.2f}%")
-except ZeroDivisionError:
-    print(f"There is no doji appearance.\n")
-finally:
-    print(f'Test period: {training_date_begin} ~ {training_date_end}')
+    trend_change_row = snapshot_df[snapshot_df['Trend_Change']==True]
 
-snapshot_df.to_csv('Result_' + filename)
+    print(f'### Test period({count}): {training_date_begin} ~ {training_date_end}')
+
+    try:
+        probability_of_doji_reversal = round(len(trend_change_row)/len(snapshot_df)*100,4)
+        print(f"Probability of trend change after a doji appearance: {probability_of_doji_reversal}%")
+        snapshot_df.to_csv('Result_' + filename)
+        return probability_of_doji_reversal
+    
+    except ZeroDivisionError:
+        print(f"There is no doji appearance.\n")
+        return None
+
+
+# Run the main function 'num_samples' times, accumulating the results only when there is a doji appearance.
+total = 0
+count = 0
+num_samples = 30
+
+while count < num_samples:
+    result = main()
+    if result is not None:
+        total += result
+        count += 1
+    print(f"count/total_num_samples:{count}/{num_samples}")
+    
+print(f"total:{total}")
+print(f"count:{count}")
+print(f"final:{total/num_samples:.2f}")
