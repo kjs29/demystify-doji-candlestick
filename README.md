@@ -23,7 +23,7 @@ The primary goal of this study is to investigate the efficacy of the Doji patter
 
 By examining various market scenarios, we aim to determine whether the appearance of a Doji truly shows a change in market direction.
 
-# Observations
+# Observations [^1] [^2]
 
 ## SPY (S&P 500 ETF) - Daily Data 
 
@@ -46,10 +46,6 @@ The visual representation of these instances can be found below:
 | 2019-06-14 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/62c0bd72-aa12-43d3-984f-b5239fd80592"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/f520e9b8-3c75-43ff-ad68-760fb2bb88b0"> | FALSE        |
 | 2020-11-02 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/41bbd23c-daf1-4987-bc60-6e6c3a529fbd"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/9890e40b-cf7b-465b-aec5-f19b51e52e71"> | TRUE         |
 | 2021-08-24 | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/0c47b1a1-9c43-4267-81e2-65193ce30e90"> | <img width="400" src="https://github.com/kjs29/demystify-doji-candlestick/assets/96529477/88202f16-f52f-4806-9385-737ba52439fd"> | TRUE         |
-
-**Margin Of Error(MOE) = 0%. [^1]**
-
-**R_before_Doji and R_after_Doji are derivated from 20 trading days.**
 
 ## QQQ (NASDAQ-100 ETF) - Daily Data 
 
@@ -162,8 +158,9 @@ The probabilities observed range from as low as 18.18% to as high as 71.43%, ind
 
 It is essential to recognize that correlation does not imply causation. While the Doji may coincide with trend changes in some instances, it does not necessarily cause them. Traders and investors should exercise caution when interpreting the Doji pattern. It seems wise to demystify the Doji pattern and not over-interpret it. That said, it doesn't mean that various other patterns incorporating Doji are meaningless. The pursuit of precise understanding through future quantitative research appears to be an essential approach, reflecting a commitment to rigorous analysis rather than superficial interpretation.
 
----
-[^1]: Daily Close - Daily Open == 0. If MOE is 0.05%, abs(Daily Close - Daily Open) <= Daily Close * 0.05 / 100
+[^1]: **Margin Of Error(MOE) = 0%.** If MOE is 0.05%, abs(Daily Close - Daily Open) <= Daily Close * 0.05 / 100
+
+[^2]: 'R_before_Doji' and 'R_after_Doji' are derivated from **20 trading days.**
 <!-- In the complex and multifaceted world of financial markets, the Doji remains an enigmatic symbol, one that invites further exploration but defies simplistic interpretation. Its allure lies in its ambiguity, and its true value may be in the questions it prompts rather than the answers it provides. -->
 
 <!-- plan.
