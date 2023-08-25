@@ -171,7 +171,7 @@ For VNQ, the probability of trend change following a Doji is exactly 50.00%.
 
 The Doji candlestick pattern does not present a consistent or strong correlation with trend reversals across various markets.
 
-The probabilities observed range from as low as 29.41% to as high as 63.64%, indicating a lack of uniformity in its predictive power.
+The probabilities observed range from as low as 18.18% to as high as 71.43%, indicating a lack of uniformity in its predictive power.
 
 It is essential to recognize that correlation does not imply causation. While the Doji may coincide with trend changes in some instances, it does not necessarily cause them. Traders and investors should exercise caution when interpreting the Doji pattern. It seems wise to demystify the Doji pattern and not over-interpret it. That said, it doesn't mean that various other patterns incorporating Doji are meaningless. The pursuit of precise understanding through future quantitative research appears to be an essential approach, reflecting a commitment to rigorous analysis rather than superficial interpretation.
 
