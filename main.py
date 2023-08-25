@@ -6,18 +6,18 @@ from correlation_analysis import calculate_correlation_coefficients
 from data_preparation import add_doji_column, remove_non_numeric_symbols
 from data_visualization import create_dataframe, draw_linear_regression
 
-def main():
+def main(filename, training_days=20, test_different_time=False):
     # Import dataset
-    filename = 'HistoricalData_QQQ_from_Nasdaq.csv'
     df = pd.read_csv(filename)
 
     # Rename a column name
     df.rename(columns={'Close/Last': 'Close'}, inplace=True)
 
     # randomly choose rows
-    starting_index = random.randint(0,len(df)-2)
-    ending_index = random.randint(starting_index+1, len(df)-1)
-    df = df.iloc[starting_index: ending_index]
+    if test_different_time:
+        starting_index = random.randint(0,len(df)-2)
+        ending_index = random.randint(starting_index+1, len(df)-1)
+        df = df.iloc[starting_index: ending_index]
     training_date_begin = df.iloc[len(df)-1]['Date']
     training_date_end = df.iloc[0]['Date']
 
@@ -38,8 +38,8 @@ def main():
     add_doji_column(df,error_margin_percentage=0)
 
     # Calculate correlation coefficient
-    calculate_correlation_coefficients(df, num_days=20, future=False)
-    calculate_correlation_coefficients(df, num_days=20, future=True)
+    calculate_correlation_coefficients(df, training_days, future=False)
+    calculate_correlation_coefficients(df, training_days, future=True)
 
     # Create a new DataFrame 'doji' and save it
     doji = df[df['doji']==True]
@@ -47,21 +47,18 @@ def main():
 
     # Save images
     for i in doji.index:
-        past_dates = df.iloc[i]['past_20_dates']
-        draw_linear_regression(past_dates, df.iloc[i]['past_20_days'])
-        plt.savefig(f'pictures/past_20_days_{i}.png')
+        past_dates = df.iloc[i][f'past_{training_days}_dates']
+        draw_linear_regression(past_dates, df.iloc[i][f'past_{training_days}_days'])
+        plt.savefig(f'pictures/past_{training_days}_days_{i}.png')
         plt.close()
 
-        future_dates = df.iloc[i]['future_20_dates']
-        draw_linear_regression(future_dates, df.iloc[i]['future_20_days'])
-        plt.savefig(f'pictures/future_20_days_{i}.png')
+        future_dates = df.iloc[i][f'future_{training_days}_dates']
+        draw_linear_regression(future_dates, df.iloc[i][f'future_{training_days}_days'])
+        plt.savefig(f'pictures/future_{training_days}_days_{i}.png')
         plt.close()
 
     # Create new dataframe
-    snapshot_df = create_dataframe(doji, 20)
-
-    # Reset the index without adding it as a new column
-    snapshot_df.reset_index(drop=True, inplace=True)
+    snapshot_df = create_dataframe(doji, training_days)
 
     # save the snapshot_df as image file
     dfi.export(snapshot_df, f'result_{count}.png')
@@ -84,15 +81,16 @@ def main():
 # Run the main function 'num_samples' times, accumulating the results only when there is a doji appearance.
 total = 0
 count = 0
-num_samples = 30
+num_samples = 1
+filename = 'HistoricalData_COST_from_Nasdaq.csv'
 
 while count < num_samples:
-    result = main()
+    result = main(filename, 50)
     if result is not None:
         total += result
         count += 1
-    print(f"count/total_num_samples:{count}/{num_samples}")
-    
+    print(f"count/total_num_samples:{count}/{num_samples}, total:{total}\n------")
+
 print(f"total:{total}")
 print(f"count:{count}")
 print(f"final:{total/num_samples:.2f}")

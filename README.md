@@ -51,59 +51,6 @@ The visual representation of these instances can be found below:
 
 **R_before_Doji and R_after_Doji are derivated from 20 trading days.**
 
-### Test period: 03/25/2014 ~ 02/22/2019
-
-Probability of trend change after a doji appearance: 42.86%
-
-| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
-|------------|---------------|--------------|--------------|
-| 2014-08-26 | 0.674029      | -0.332280    | True         |
-| 2015-05-15 | 0.149173      | -0.788619    | True         |
-| 2015-06-09 | -0.292485     | -0.736562    | False        |
-| 2015-06-17 | -0.758554     | -0.272807    | False        |
-| 2017-05-01 | 0.512020      | 0.406110     | False        |
-| 2018-05-25 | 0.873484      | 0.279332     | False        |
-| 2018-10-02 | 0.654129      | -0.900382    | True         |
-
-### Test period: 11/09/2016 ~ 09/23/2021
-
-Probability of trend change after a doji appearance: 57.14%
-
-| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
-|------------|---------------|--------------|--------------|
-| 2017-05-01 | 0.512020      | 0.406110     | False        |
-| 2018-05-25 | 0.873484      | 0.279332     | False        |
-| 2018-10-02 | 0.654129      | -0.900382    | True         |
-| 2019-05-08 | 0.617078      | -0.592132    | True         |
-| 2019-06-14 | 0.215034      | 0.843783     | False        |
-| 2020-11-02 | -0.514343     | 0.845810     | True         |
-| 2021-08-24 | 0.645146      | -0.753308    | True         |
-
-### Test period: 11/10/2014 ~ 04/12/2016
-
-Probability of trend change after a doji appearance: 33.33%
-
-| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
-|------------|---------------|--------------|--------------|
-| 2015-05-15 | 0.149173      | -0.788619    | True         |
-| 2015-06-09 | -0.292485     | -0.736562    | False        |
-| 2015-06-17 | -0.758554     | -0.272807    | False        |
-
-### Test period: 01/25/2018 ~ 10/22/2021
-
-Probability of trend change after a doji appearance: 66.67%
-
-| Doji_Date  | R_before_Doji | R_after_Doji | Trend_Change |
-|------------|---------------|--------------|--------------|
-| 2018-05-25 | 0.873484      | 0.279332     | False        |
-| 2018-10-02 | 0.654129      | -0.900382    | True         |
-| 2019-05-08 | 0.617078      | -0.592132    | True         |
-| 2019-06-14 | 0.215034      | 0.843783     | False        |
-| 2020-11-02 | -0.514343     | 0.845810     | True         |
-| 2021-08-24 | 0.645146      | -0.753308    | True         |
-
-... and more
-
 ## QQQ (NASDAQ-100 ETF) - Daily Data 
 
 ### Test period: 2013.08.26 ~ 2023.08.22
@@ -210,6 +157,17 @@ For VNQ, the probability of trend change following a Doji is exactly 50.00%.
 
 
 # Conclusion
+
+<em>Probability of effectiveness of Doji's reversal</em>
+
+|                   | SPY                  | QQQ                  | GLD                  | TLT                  | VNQ                  | AAPL                 | GOOG                 | MSFT                 | COST                 |
+|-------------------|----------------------|----------------------|----------------------|----------------------|----------------------|----------------------|----------------------|----------------------|----------------------|
+| Training Periods  | (08/23/2013 ~ 08/22/2023) | (08/26/2013 ~ 08/22/2023) | (08/26/2013 ~ 08/22/2023) | (08/26/2013 ~ 08/22/2023) | (08/26/2013 ~ 08/22/2023) | (08/26/2013 ~ 08/23/2023) | (03/27/2014 ~ 08/23/2023) | (08/26/2013 ~ 08/23/2023) | (08/26/2013 ~ 08/23/2023) |
+| 5                 | 0.1818               | 0.5294               | 0.4167               | 0.3846               | 0.2857               | 0.3333               | 0.65                 | 0.6316               | 0.6667               |
+| 10                | 0.6364               | 0.4118               | 0.5                  | 0.6923               | 0.7143               | 0.5417               | 0.5                  | 0.4211               | 0.3333               |
+| 20                | 0.5455               | 0.2941               | 0.6364               | 0.4615               | 0.5                  | 0.375                | 0.4091               | 0.4211               | 0.5556               |
+| 50                | 0.6364               | 0.4118               | 0.3636               | 0.4167               | 0.5                  | 0.3333               | 0.65                 | 0.3333               | 0.375                |
+
 
 The Doji candlestick pattern does not present a consistent or strong correlation with trend reversals across various markets.
 
