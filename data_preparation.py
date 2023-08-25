@@ -1,8 +1,20 @@
+import random
 import pandas as pd
 
-# Function to iterate through the row and collect the past/future closes into a list
+def remove_non_numeric_symbols(df:pd.DataFrame, cols:list[str]):
+    """
+    Iterates through cols and remove all the non-numeric symbols and cast to float type.
+    """
+    for col in cols:
+        # if col data is object(str)
+        if df[col].dtype == 'object':
+            df[col] = df[col].str.replace(r'[^\d.]', '')
+            df[col] = df[col].astype(float)
+
 def collect_closes(row, num_days, future, prefix):
     """
+    Function to iterate through the row and collect the past/future closes into a list. 
+    
     Helper function for 'add_past_future_close_columns'
     """
     closes = []
@@ -12,6 +24,8 @@ def collect_closes(row, num_days, future, prefix):
 
 def collect_dates(row, num_days, future, prefix):
     """
+    Function to iterate through the row and collect the past/future dates into a list. 
+
     Helper function for 'add_past_future_date_columns'
     """
     dates = []
@@ -97,5 +111,6 @@ def add_doji_column(df: pd.DataFrame, error_margin_percentage=0.05) -> None:
     Returns:
         None: The function modifies the DataFrame in-place and does not return a value.
     """
+    df['Close'] = pd.to_numeric(df['Close'])
     df['Margin_of_error'] = df['Close'] * error_margin_percentage / 100
     df['doji'] = df.apply(lambda row: is_doji(row, error_margin_percentage), axis=1)

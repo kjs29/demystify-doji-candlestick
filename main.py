@@ -1,14 +1,27 @@
+import random
 import pandas as pd
 import matplotlib.pyplot as plt
 from correlation_analysis import calculate_correlation_coefficients
-from data_preparation import add_doji_column
+from data_preparation import add_doji_column, remove_non_numeric_symbols
 from data_visualization import create_dataframe, draw_linear_regression
 
-# Import SPY.csv
-df = pd.read_csv('HistoricalData_VNQ_from_Nasdaq.csv')
+# Import dataset
+filename = 'HistoricalData_TLT_from_Nasdaq.csv'
+df = pd.read_csv(filename)
 
 # Rename a column name
 df.rename(columns={'Close/Last': 'Close'}, inplace=True)
+
+# randomly choose rows
+starting_index = random.randint(0,len(df)-2)
+ending_index = random.randint(starting_index+1, len(df)-1)
+df = df.iloc[starting_index: ending_index]
+training_date_begin = df.iloc[len(df)-1]['Date']
+training_date_end = df.iloc[0]['Date']
+
+# get rid of non-numeric symbols in the columns and convert to float type
+cols = ['Close','Open','High','Low']
+remove_non_numeric_symbols(df, cols)
 
 # Convert the 'Date' column to datetime format
 df['Date'] = pd.to_datetime(df['Date'])
@@ -49,5 +62,11 @@ print(snapshot_df)
 
 trend_change_row = snapshot_df[snapshot_df['Trend_Change']==True]
 
-print(f"Probability of trend change after a doji appearance: {len(trend_change_row)/len(snapshot_df)*100:.2f}%")
-snapshot_df.to_csv('VNQ_20130826_20230822.csv')
+try:
+    print(f"Probability of trend change after a doji appearance: {len(trend_change_row)/len(snapshot_df)*100:.2f}%")
+except ZeroDivisionError:
+    print(f"There is no doji appearance.\n")
+finally:
+    print(f'Test period: {training_date_begin} ~ {training_date_end}')
+
+snapshot_df.to_csv('Result_' + filename)

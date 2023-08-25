@@ -35,10 +35,13 @@ def create_dataframe(df, num_days):
         'R_after_Doji': df[f'correlation_coefficient_future_{num_days}_days']
     })
 
+    # Create a new column 'Trend_Change'
     new_df['Trend_Change'] = new_df.apply(lambda row: trend_change(row), axis=1)
 
-    return new_df
+    # Remove rows containing NaN values
+    new_df = new_df.dropna()
 
+    return new_df
 
 def draw_linear_regression(dates:list[str], y:list[float]):
     """
