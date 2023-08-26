@@ -45,7 +45,7 @@ def get_correlation_coefficient(row:pd.Series, column_name:str, y:list[float]=No
     for i in range(len(x)):
         slope_numerator += ((x[i]-mean_x) * (y[i]-mean_y))
         slope_dinominator += ((x[i]-mean_x) ** 2)
-
+    
     slope = slope_numerator / slope_dinominator
 
     # calculate standard deviation for x, y
@@ -58,6 +58,9 @@ def get_correlation_coefficient(row:pd.Series, column_name:str, y:list[float]=No
     stdev_x = math.sqrt(tmp_x / (len(x)-1))
     stdev_y = math.sqrt(tmp_y / (len(y)-1))
 
+    if stdev_y == 0:
+        return 0
+    
     # calculate correlation coefficient
     correlation_coefficient = slope * stdev_x / stdev_y
 

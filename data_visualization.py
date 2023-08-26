@@ -84,6 +84,9 @@ def draw_linear_regression(dates:list[str], y:list[float]):
     stdev_x = math.sqrt(tmp_x / (len(x)-1))
     stdev_y = math.sqrt(tmp_y / (len(y)-1))
 
+    if stdev_y == 0:
+        return 0
+    
     # calculate correlation coefficient
     correlation_coefficient = slope * stdev_x / stdev_y
     
