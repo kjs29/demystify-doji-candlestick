@@ -6,7 +6,9 @@ import matplotlib.pyplot as plt
 def trend_change(row):
     """
     Check if there's a trend change based on the product of the correlation coefficients
-    before and after the doji pattern. Helper function for 'create_dataframe'.
+    before and after the doji pattern. 
+    
+    Helper function for 'create_dataframe'.
 
     Args:
         row (Series): DataFrame row with correlation coefficients before and after the doji pattern.
@@ -27,7 +29,7 @@ def create_dataframe(df, num_days):
     Returns:
         new_df (DataFrame): New DataFrame with doji dates, correlation coefficients, and trend changes.
     """
-    
+        
     # Create a DataFrame with the required columns
     new_df = pd.DataFrame({
         'Doji_Date': pd.to_datetime(df['Date']),

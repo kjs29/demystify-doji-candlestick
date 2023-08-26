@@ -1,15 +1,6 @@
 import random
 import pandas as pd
-
-def remove_non_numeric_symbols(df:pd.DataFrame, cols:list[str]):
-    """
-    Iterates through cols and remove all the non-numeric symbols and cast to float type.
-    """
-    for col in cols:
-        # if col data is object(str)
-        if df[col].dtype == 'object':
-            df[col] = df[col].str.replace(r'[^\d.]', '')
-            df[col] = df[col].astype(float)
+from correlation_analysis import get_correlation_coefficient
 
 def collect_closes(row, num_days, future, prefix):
     """
@@ -91,6 +82,19 @@ def add_past_future_date_columns(df: pd.DataFrame, num_days: int, future: bool) 
     for i in range(1, num_days + 1):
         df.drop(f'{prefix}({i})', axis=1, inplace=True)
 
+def remove_non_numeric_symbols(df:pd.DataFrame, cols:list[str]):
+    """
+    Iterates through cols and remove all the non-numeric symbols and dot(.) and cast to float type.
+    
+    For example,
+    if cols = ['Close','Open','High','Low'], it removes all non-numeric symbols under each columns 'Close','Open','High','Low'.
+    """
+    for col in cols:
+        # if col data is object(str)
+        if df[col].dtype == 'object':
+            df[col] = df[col].str.replace(r'[^\d.]', '')
+            df[col] = df[col].astype(float)
+
 def is_doji(row, error_margin_percentage):
     """
     Checks whether a particular row represents a doji candlestick pattern in stock data.
@@ -114,3 +118,37 @@ def add_doji_column(df: pd.DataFrame, error_margin_percentage=0.05) -> None:
     df['Close'] = pd.to_numeric(df['Close'])
     df['Margin_of_error'] = df['Close'] * error_margin_percentage / 100
     df['doji'] = df.apply(lambda row: is_doji(row, error_margin_percentage), axis=1)
+
+def add_correlation_coefficient_column(df: pd.DataFrame, num_days: int, future: bool) -> None:
+    """
+    Add the correlation coefficient column to the DataFrame for the given number of past or future days.
+
+    This function also calls the 'add_past_future_date_columns' to add necessary columns for plotting necessary dates to visualize dates in X axis.
+    
+    For example,
+    if num_days == 5, future == True, it will add a column 'correlation_coefficient_future_5_days' to df.
+
+    This function first calls the 'add_past_future_close_columns' function to add necessary columns, 
+    then computes the correlation coefficients using the 'get_correlation_coefficient' function and adds the results to the DataFrame.
+
+    Args:
+        df (pd.DataFrame): The DataFrame containing the stock data.
+        num_days (int): Number of days to consider in the calculation.
+        future (bool): Whether to consider future days (True) or past days (False).
+
+    Returns:
+        None: The function modifies the DataFrame in-place and does not return a value.
+    """
+
+    # Call 'add_past_future_close_columns' function to prepare calculations
+    add_past_future_close_columns(df, num_days, future)
+
+    # Call 'add_past_future_date_columns' function to prepare displaying dates on x-axis
+    add_past_future_date_columns(df, num_days, future)
+
+    # Construct the correct column name based on num_days and future setting
+    column_name = f'future_{str(num_days)}_days' if future else f'past_{str(num_days)}_days'
+
+    # Apply 'get_correlation_coefficient' to each row, passing the correct column name
+    df[f'correlation_coefficient_future_{str(num_days)}_days' if future else f'correlation_coefficient_past_{str(num_days)}_days'] = \
+        df.apply(lambda row: get_correlation_coefficient(row, column_name), axis=1)
