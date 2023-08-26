@@ -48,8 +48,14 @@ def main(filename, training_days=20, test_different_time=False, count=0):
     # Add a 'doji' column to the DataFrame
     add_doji_column(df, error_margin_percentage=0)
 
-    # Filter out rows where 'doji' is True and save this subset as a new CSV
+    # Filter out rows where 'doji' is True
     doji_df = df[df['doji']==True]
+    
+    # Early return None if doji isn't found in the entire DataFrame
+    if len(doji_df) == 0:
+        return -1
+    
+    # Save this subset as a new CSV
     doji_df.to_csv('doji.csv')
 
     # For each doji, save images; scatterplots and linear regression lines for past and future training days
@@ -94,36 +100,22 @@ total = 0
 count = 0
 
 # Parameters - Modify to test different inputs
-num_samples = 1
-filename = 'HistoricalData_SPY_from_Nasdaq.csv'
-training_days = 10
-test_different_time = False
+num_samples = 30
+filename = 'HistoricalData_AAPL_from_Nasdaq.csv'
+training_days = 5
+test_different_time = True
 
-# if test_different_time is True
-if test_different_time == True:
-    # If no doji is found, exit the program
-    if main(filename, training_days, False) is None:
-        print("No doji found in the entire dataset. Exiting the program.")
-    # Run the main function multiple times, accumulating results when a doji appears
-    else:
-        while count < num_samples:
-            result = main(filename, training_days, test_different_time, count=count)
-            if result is not None:
-                total += result
-                count += 1
-            print(f'count/total_num_samples:{count}/{num_samples}, total:{total}\n------')
-        # Display the final accumulated results
-        print(f'Total added probability: {total}% / Count: {count}')
-        print(f'Mean probability: {total/num_samples:.2f}%')
-# if test_different_time is False
+# If no doji is found in the entire dataset, exit the program
+if main(filename, training_days, False) == -1:
+    print("No doji found in the entire dataset. Exiting the program.")
 else:
+    # Run the main function multiple times, accumulating results when a doji appears
     while count < num_samples:
         result = main(filename, training_days, test_different_time, count=count)
-        if result is not None:
+        if result is not None and result != -1:
             total += result
             count += 1
         print(f'count/total_num_samples:{count}/{num_samples}, total:{total}\n------')
-
     # Display the final accumulated results
     print(f'Total added probability: {total}% / Count: {count}')
     print(f'Mean probability: {total/num_samples:.2f}%')
