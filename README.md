@@ -160,7 +160,8 @@ It is essential to recognize that correlation does not imply causation. While th
 
 [^1]: **Margin Of Error(MOE) = 0%.** If MOE is 0.05%, abs(Daily Close - Daily Open) <= Daily Close * 0.05 / 100
 
-[^2]: 'R_before_Doji' and 'R_after_Doji' are derivated from **20 trading days.**
+[^2]: In this observation, only the correlation coefficient calculated based on 20 trading days is shown as an example.
+
 <!-- In the complex and multifaceted world of financial markets, the Doji remains an enigmatic symbol, one that invites further exploration but defies simplistic interpretation. Its allure lies in its ambiguity, and its true value may be in the questions it prompts rather than the answers it provides. -->
 
 <!-- plan.
