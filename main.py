@@ -74,7 +74,7 @@ def main(filename, training_days=20, test_different_time=False, count=0):
     snapshot_df = create_dataframe(doji_df, training_days)
 
     # Save the snapshot DataFrame as an image
-    # dfi.export(snapshot_df, f'result_{count}.png',max_rows=-1)
+    dfi.export(snapshot_df, f'result_{count}.png',max_rows=-1)
 
     # Filter rows where trend changes after a doji
     trend_change_row = snapshot_df[snapshot_df['Trend_Change']==True]
@@ -101,7 +101,7 @@ count = 0
 
 # Parameters - Modify to test different inputs
 num_samples = 1
-filename = 'HistoricalData_LVMH_from_Nasdaq.csv'
+filename = 'HistoricalData_BYND_from_Nasdaq.csv'
 training_days = 5
 test_different_time = False
 
@@ -119,3 +119,4 @@ else:
     # Display the final accumulated results
     print(f'Total added probability: {total}% / Count: {count}')
     print(f'Mean probability: {total/num_samples:.2f}%')
+
