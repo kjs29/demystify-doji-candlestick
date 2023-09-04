@@ -101,8 +101,8 @@ count = 0
 
 # Parameters - Modify to test different inputs
 num_samples = 1
-filename = 'HistoricalData_BYND_from_Nasdaq.csv'
-training_days = 5
+filename = 'HistoricalData_066970_from_Nasdaq.csv'
+training_days = 10
 test_different_time = False
 
 # If no doji is found in the entire dataset, exit the program
@@ -119,4 +119,3 @@ else:
     # Display the final accumulated results
     print(f'Total added probability: {total}% / Count: {count}')
     print(f'Mean probability: {total/num_samples:.2f}%')
-
