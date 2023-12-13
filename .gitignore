@@ -3,5 +3,4 @@ __pycache__
 pictures
 Results
 *.png
-*.txt
 heatmap.py

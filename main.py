@@ -2,6 +2,7 @@ import random
 import pandas as pd
 import matplotlib.pyplot as plt
 import dataframe_image as dfi
+import os
 
 from data_preparation import (
     add_doji_column,
@@ -58,6 +59,13 @@ def main(filename, training_days=20, test_different_time=False, count=0):
     # Save this subset as a new CSV
     doji_df.to_csv('doji.csv')
 
+    # Define the folder name
+    folder_name = 'pictures'
+
+    # Check if the folder exists, and create it if it doesn't
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+
     # For each doji, save images; scatterplots and linear regression lines for past and future training days
     for i in doji_df.index:
         past_dates = df.iloc[i][f'past_{training_days}_dates']
@@ -101,8 +109,8 @@ count = 0
 
 # Parameters - Modify to test different inputs
 num_samples = 1
-filename = 'HistoricalData_066970_from_Nasdaq.csv'
-training_days = 10
+filename = 'HistoricalData_YINN_from_Nasdaq.csv'
+training_days = 5
 test_different_time = False
 
 # If no doji is found in the entire dataset, exit the program
