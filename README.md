@@ -138,6 +138,9 @@ For VNQ, the probability of trend change following a Doji is exactly 50.00%.
 | 2022-12-30 |      -0.819642 |      0.886157 |         True |
 | 2023-01-19 |       0.807325 |      0.422902 |        False |
 
+# Further investigation & speculation
+
+Even if a correlation between the Doji candlestick pattern and stock prices is established, due to the multitude of factors influencing stock price movements, this does not necessarily imply a causal relationship. Consequently, further analysis is crucial to identify additional factors that influence the stock market. This analysis would require adherence to the principle of 'Ceteris Paribus' (all other things being equal) to isolate the effects of individual variables. The Doji candlestick pattern might prove to be more indicative over shorter timeframes, such as 1, 3, and 5-minute candlestick bars, where fewer influencing factors are likely at play.
 
 # Conclusion
 

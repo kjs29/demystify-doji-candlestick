@@ -1,4 +1,3 @@
-import random
 import pandas as pd
 from correlation_analysis import get_correlation_coefficient
 

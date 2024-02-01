@@ -109,7 +109,7 @@ count = 0
 
 # Parameters - Modify to test different inputs
 num_samples = 1
-filename = 'HistoricalData_YINN_from_Nasdaq.csv'
+filename = 'HistoricalData_DAL_from_Nasdaq.csv'
 training_days = 5
 test_different_time = False
 
